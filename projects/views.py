@@ -17,8 +17,9 @@ class ProjectListView(generics.ListAPIView):
                 queryset = queryset.filter(show_in_home=False)
         return queryset
 
-
 class ProjectDetailView(generics.RetrieveAPIView):
-    queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    lookup_field = "slug"
+
+    def get_object(self):
+        slug = self.kwargs.get("slug")
+        return get_object_or_404(Project, slug__iexact=slug)
