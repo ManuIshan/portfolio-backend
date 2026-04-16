@@ -28,21 +28,21 @@ CSRF_TRUSTED_ORIGINS = [
 # ── Apps ─────────────────────────────────────────────────────────
 
 INSTALLED_APPS = [
-'rest_framework',
-'corsheaders',
-'cloudinary',
-'cloudinary_storage',
-'projects',
-'cv',
-'contact',
+    'rest_framework',
+    'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
 
-'django.contrib.admin',
-'django.contrib.auth',
-'django.contrib.contenttypes',
-'django.contrib.sessions',
-'django.contrib.messages',
-'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',  # ✅ MUST BE HERE
 
+    'projects',
+    'cv',
+    'contact',
 ]
 
 # ── Middleware ───────────────────────────────────────────────────
@@ -59,7 +59,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+]
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'config.urls'
