@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1"
 ]
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
 CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com",
     "https://*.up.railway.app"
